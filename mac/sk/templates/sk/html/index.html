@@ -1,0 +1,67 @@
+
+{% extends 'sk/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!--                     <div class="alert alert-primary" role="alert">-->
+<!--                      Upload Result-->
+<!--                    </div>-->
+<h1> ...
+</h1>
+<div class="container">
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <div>
+                <h5><span style="color: rgba(0, 0, 0, 0.9);" id="typed"></span></h5>
+                <script>
+                    var typed = new Typed('#typed', {
+                        strings: ["Wel Come to the Result Upload site of SK parivar"],
+                        backSpeed: 15,
+                        smartBackspace: true,
+                        backDelay: 1200,
+                        startDelay: 1000,
+                        typeSpeed: 25,
+                        loop: true,
+                    });
+                </script>
+            </div>
+        </ol>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <h5> Select Result </h5>
+    <form class="form-inline my-2 my-lg-0" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="btn btn-outline-success my-2 mx-1 my-sm-0" type="file" name="document">
+        <button class="btn btn-outline-success my-2 mx-1 my-sm-0" type="submit"> Upload Result</button>
+    </form>
+    <!--<form method="post" enctype="multipart/form-data">-->
+    <!--    {% csrf_token %}-->
+    <!--    <input type="file" name="document">-->
+    <!--    <button type="submit"> Upload Result</button>-->
+    <!--</form>-->
+    {% if url %}
+<!--        <p> Uploaded File: <a href="{{ url}}" > {{ url }} </a> </p>-->
+    {% endif %}
+
+    <!--<h5>After Upload Result Click on See Result</h5>-->
+
+    <a href="/static/sk/media/{{ url}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" target="iframe_a"
+        class="btn btn-outline-success my-2" role="button">Click to Check Uploaded Result</a>
+
+
+    <!--    <p><a  href="{{ url}}" frameborder="0" scrolling="no"-->
+    <!--            marginheight="0" marginwidth="0" target="iframe_a">See Result</a></p>-->
+
+    <iframe height="600px" width="80%" src="{% static 'sk/media/result.jpg' %}" name="iframe_a"></iframe>
+</div>
+
+    </div>
+{% endblock %}
+

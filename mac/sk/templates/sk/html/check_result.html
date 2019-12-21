@@ -1,0 +1,36 @@
+{% extends 'sk/html/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+<div class="container">
+<form style="color:green;width:500px" method="post" enctype="multipart/form-data">
+    <fieldset>
+    <legend>Upload Your Document</legend>
+    {% csrf_token%}
+    {{ form|crispy}}
+    <button type="submit" class="btn btn-outline-success">Upload </button>
+    </fieldset>
+</form>
+    </div>
+
+<br>
+<div class="container">
+<table>
+      <tbody>
+{% for book in books %}
+                {% if book.file %}
+                    <img src="{{ book.file.url}}" alt="{{book.title}}" style="width:110px">
+                    {% else %}
+                    <span class="text-muted"> Image file not uploaded</span>
+                    {% endif %}
+{% endfor %}
+    </tbody>
+</table>
+    </div>
+
+
+{% endblock %}

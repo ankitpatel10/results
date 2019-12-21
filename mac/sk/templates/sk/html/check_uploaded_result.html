@@ -1,0 +1,66 @@
+{% extends 'sk/html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<table  class="table table-striped table-bordered table-primary sticky-header">
+  <thead>
+    <tr  >
+        <th style="position: sticky;
+                    top: 80px;
+                    " >ID</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    " >Surname</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    ">Name</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    " >Mo_No</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    " >Std</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    " >Percentage</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    " >Download File</th>
+        <th style="position: sticky;
+                    top: 80px;
+                    "> Image </th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td >{{ book.Surname}}</td>
+            <td>{{ book.Name}}</td>
+            <td>{{ book.Mo_No}}</td>
+            <td>{{ book.Std}}</td>
+            <td>{{ book.Percentage}}</td>
+            <td>
+                <a href="{{ book.file.url}}" class="btn btn-primary btn-sm" target="_blank">Download Image</a>
+            </td>
+            <td>
+
+                   {% if book.file %}
+
+                    <img src="{{ book.file.url}}" alt="{{book.title}}" style="width:100px">
+                    {% else %}
+                    <span class="text-muted"> Image file not uploaded</span>
+                    {% endif %}
+
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
